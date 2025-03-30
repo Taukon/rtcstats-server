@@ -19,6 +19,9 @@ features:
 amplitude:
     key:
 
+localstack:
+    endpoint:
+
 s3:
     accessKeyId:
     secretAccessKey:

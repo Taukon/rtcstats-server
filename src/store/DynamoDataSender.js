@@ -1,4 +1,5 @@
 const assert = require('assert').strict;
+const localstack = require('config').localstack;
 const dynamoose = require('dynamoose');
 
 const logger = require('../logging');
@@ -23,10 +24,20 @@ class DynamoDataSender {
         assert(region, 'Region is required when initializing DynamoDB');
         assert(tableName, 'Table name is required when initializing DynamoDB');
 
-        // Set region to avoid aws config error
-        dynamoose.aws.sdk.config.update({
+        let configParam = {
             region
-        });
+        };
+
+        if (typeof localstack.endpoint === 'string') {
+            configParam = {
+                endpoint: localstack.endpoint,
+                s3ForcePathStyle: true,
+                ...configParam
+            };
+        }
+
+        // Set region to avoid aws config error
+        dynamoose.aws.sdk.config.update(configParam);
 
         // Used for working with local data
         // Requires a local DynamoDB instance running

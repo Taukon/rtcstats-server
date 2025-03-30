@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const localstack = require('config').localstack;
 const { assert } = require('console');
 const fs = require('fs');
 const zlib = require('zlib');
@@ -27,11 +28,21 @@ class S3Manager {
             AWS.config = config;
         }
 
-        this.s3bucket = new AWS.S3({
+        let s3ConfigParam = {
             params: {
                 Bucket: bucket
             }
-        });
+        };
+
+        if (localstack.endpoint) {
+            s3ConfigParam = {
+                endpoint: localstack.endpoint,
+                s3ForcePathStyle: true,
+                ...s3ConfigParam
+            };
+        }
+
+        this.s3bucket = new AWS.S3(s3ConfigParam);
 
         this.bucket = bucket;
         this.signedLinkExpirationSec = signedLinkExpirationSec;

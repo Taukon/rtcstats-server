@@ -5,6 +5,8 @@
   "main": "websocket.js",
   "private": true,
   "scripts": {
+    "init:dynamodb": "./bin/init-dynamodb.js",
+    "init:s3": "aws s3api create-bucket --bucket $RTCSTATS_S3_BUCKET",
     "lint:fix": "eslint --fix ./src/",
     "lint": "eslint ./src/",
     "integration": "node ./src/test/client.js",
