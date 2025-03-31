@@ -5,6 +5,8 @@ server:
     certPath: RTCSTATS_CERTPath
     tempPath: RTCSTATS_TEMPPATH
     useHTTPS: RTCSTATS_HTTPS
+    skipLoadBalancerIp: RTCSTATS_SKIP_LOAD_BALANCER_IP
+    jsonConsoleLog: RTCSTATS_JSON_CONSOLE_LOG
 
 localstack:
     endpoint: LOCALSTACK_ENDPOINT
@@ -22,8 +24,12 @@ firehose:
     meetingEventStream: RTCSTATS_FIREHOSE_MEETING_EVENT_STREAM
 
 s3:
+    accessKeyId: RTCSTATS_S3_ACCESSKEYID
+    secretAccessKey: RTCSTATS_S3_SECRETACCESSKEY
     region: RTCSTATS_S3_AWS_REGION
     bucket: RTCSTATS_S3_BUCKET
+    useIAMAuth: RTCSTATS_S3_USEIAMAUTH
+    signedLinkExpirationSec: RTCSTATS_S3_SIGNEDLINKEXPIRATIONSEC
 
 dynamo:
     tableName: RTCSTATS_METADATA_TABLE
