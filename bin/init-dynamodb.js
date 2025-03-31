@@ -5,11 +5,10 @@ const config = require('config');
 
 
 const RTCSTATS_METADATA_TABLE = config.dynamo.tableName;
-const AWS_REGION = config.s3.region;
 const LOCALSTACK_ENDPOINT = config.localstack.endpoint;
 
 let configParam = {
-    region: AWS_REGION
+    region: process.env.AWS_REGION
 };
 
 if (typeof LOCALSTACK_ENDPOINT === 'string') {
