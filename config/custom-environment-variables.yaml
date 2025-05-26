@@ -1,6 +1,10 @@
 server:
     logLevel: RTCSTATS_LOG_LEVEL
     appEnvironment: RTCSTATS_ENVIRONMENT
+    keyPath: RTCSTATS_KEYPATH
+    certPath: RTCSTATS_CERTPATH
+    tempPath: RTCSTATS_TEMPPATH
+    useHTTPS: RTCSTATS_HTTPS
 
 amplitude:
     key: RTCSTATS_AMPLITUDE_KEY
